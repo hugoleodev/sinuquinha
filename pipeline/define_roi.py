@@ -16,7 +16,10 @@ class DefineROI(Pipeline):
 
         ROI = np.zeros_like(image)
 
-        ROI[88:413, 100:660] = image[88:413, 100:660]
+        x_start, x_end = self.x_range
+        y_start, y_end = self.y_range
+
+        ROI[x_start:x_end, y_start:y_end] = image[x_start:x_end, y_start:y_end]
 
         LAB_ROI = cv2.cvtColor(ROI, cv2.COLOR_BGR2LAB)
 
