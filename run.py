@@ -1,17 +1,26 @@
 from tqdm import tqdm
 
-from pipeline.capture_video import CaptureVideo
-from pipeline.display_video import DisplayVideo
-from pipeline.define_roi import DefineROI
-from pipeline.scale_video import ScaleVideo
+from pipeline import (CaptureVideo,
+                      ScaleVideo,
+                      DefineROI,
+                      TrackRedBalls,
+                      TrackBlueBalls,
+                      TrackWhiteBall,
+                      MergeRoi,
+                      DisplayVideo)
 
 if __name__ == "__main__":
     capture_video = CaptureVideo("videos/sinuquinha.mp4")
     display_video = DisplayVideo("image")
     define_roi = DefineROI((88, 413), (100, 660))
     scale_video = ScaleVideo(.4)
+    track_red_balls = TrackRedBalls()
+    track_blue_balls = TrackBlueBalls()
+    track_white_ball = TrackWhiteBall()
+    merge_roi = MergeRoi()
 
-    pipeline = (capture_video | scale_video | define_roi | display_video)
+    pipeline = (capture_video | scale_video | define_roi |
+                track_red_balls | track_blue_balls | track_white_ball | merge_roi | display_video)
 
     progress = tqdm(
         total=capture_video.frame_count if capture_video.frame_count > 0 else None)

@@ -1,5 +1,6 @@
 from .pipeline import Pipeline
 import numpy as np
+import cv2
 
 
 class DefineROI(Pipeline):
@@ -17,6 +18,9 @@ class DefineROI(Pipeline):
 
         ROI[88:413, 100:660] = image[88:413, 100:660]
 
+        LAB_ROI = cv2.cvtColor(ROI, cv2.COLOR_BGR2LAB)
+
         data["ROI"] = ROI
+        data["LAB_ROI"] = LAB_ROI
 
         return data

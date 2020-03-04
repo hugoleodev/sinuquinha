@@ -26,11 +26,18 @@ jogador1_placar = 0
 jogador2_placar = 0
 
 
+bola_branca = cv2.imread("bola_branca.jpg")
+
+bola_vermelha = cv2.imread("bola_vermelha.jpg")
+
+bola_azul = cv2.imread("bola_azul.jpg")
+
+
 prev = cv2.resize(prev_frame, None, fx=scale, fy=scale)
 
-fourcc = cv2.VideoWriter_fourcc(*"MP4V")  # Cria o objeto para gravar vídeo
-writer = cv2.VideoWriter('sinuquinha_final.mp4', fourcc,
-                         30, (prev.shape[1], prev.shape[0]))
+# fourcc = cv2.VideoWriter_fourcc(*"MP4V")  # Cria o objeto para gravar vídeo
+# writer = cv2.VideoWriter('sinuquinha_final.mp4', fourcc,
+#                          30, (prev.shape[1], prev.shape[0]))
 
 # writer = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
 
@@ -60,8 +67,10 @@ while True:
     ROI[88:413, 100:660] = frame[88:413, 100:660]
 
     cv2.imshow("ROI", ROI)
+    cv2.waitKey(1)
+    continue
 
-    frame = cv2.GaussianBlur(frame, (3, 3), 0, 0)
+    # frame = cv2.GaussianBlur(frame, (3, 3), 0, 0)
 
     red_ball_lower = np.array([30, 180, 0], dtype=np.uint8)
     red_ball_upper = np.array([255, 213, 160], dtype=np.uint8)
@@ -230,7 +239,7 @@ while True:
 
     print("count_blue_balls", count_blue_balls)
     print("count_red_balls", count_red_balls)
-    writer.write(frame)
+    # writer.write(frame)
 
 cap.release()
 cv2.destroyAllWindows()
