@@ -6,4 +6,5 @@ from .track_red_balls import TrackRedBalls
 from .track_blue_balls import TrackBlueBalls
 from .track_white_ball import TrackWhiteBall
 from .merge_roi import MergeRoi
+from .display_score import DisplayScore
 from .display_video import DisplayVideo
