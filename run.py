@@ -21,8 +21,15 @@ if __name__ == "__main__":
     display_score = DisplayScore("Jogador 1", "Jogador 2", 4)
     merge_roi = MergeRoi()
 
-    pipeline = (capture_video | scale_video | define_roi |
-                track_red_balls | track_blue_balls | track_white_ball | merge_roi | display_score | display_video)
+    pipeline = (capture_video
+                | scale_video
+                | define_roi
+                | track_red_balls
+                | track_blue_balls
+                | track_white_ball
+                | merge_roi
+                | display_score
+                | display_video)
 
     progress = tqdm(
         total=capture_video.frame_count if capture_video.frame_count > 0 else None)
