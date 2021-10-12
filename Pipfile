@@ -7,7 +7,7 @@ verify_ssl = true
 autopep8 = "*"
 
 [packages]
-opencv-python = "==4.1.0.25"
+opencv-python = "==4.2.0.32"
 numpy = "*"
 tqdm = "*"
 imutils = "*"
